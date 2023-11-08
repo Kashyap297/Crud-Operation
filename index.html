@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud Operation</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="asset/css/all.min.css">
+
+    <!-- css -->
+    <link rel="stylesheet" href="asset/css/style.css">
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+
+</head>
+
+<body onload="userInfo()">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-5">
+                <div class="card p-2 shadow border-0">
+                    <h2 class="text-center py-2 fw-bold gray-color">CRUD Operation</h2>
+                    <form action="" class="p-4 pt-2 text-center" id="form">
+                        <input type="text" hidden id="uid">
+                        <input type="text" class="w-100" placeholder="Enter Name" id="name" required>
+                        <input type="email" class="w-100 my-3" placeholder="Enter Email-ID" id="email" required>
+
+                        <input type="submit" value="Add" id="btn">
+                    </form>
+                </div>
+            </div>
+            <div class="col-6 ms-auto">
+                <div class="card shadow">
+                    <div class="table-responsive">
+                        <table class="table mb-0 ">
+                            <thead class="blue-color text-danger">
+                                <tr class="text-center">
+                                    <th scope="col" class="text-white bl-bg-clr">Name</th>
+                                    <th scope="col" class="text-white bl-bg-clr">Email-ID</th>
+                                    <th scope="col" class="text-white bl-bg-clr">Edit</th>
+                                    <th scope="col" class="text-white bl-bg-clr">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center" id="setdata">
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var person = [
+        { name: "Omprakash", email: "omprakash@gmail.com" },
+        { name: "Vikas", email: "vikas@gmail.com" },
+    ]
+
+    var form = document.querySelector('#form')
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var btn = document.getElementById('btn').value;
+        if (btn == 'Add') {
+            var name = document.getElementById('name').value
+            var email = document.getElementById('email').value
+            person.push({ name: name, email: email })
+            userInfo()
+
+        } else {
+            var name = document.getElementById('name').value
+            var email = document.getElementById('email').value
+            var uid = document.getElementById('uid').value
+            person[uid].name = name
+            person[uid].email = email
+            var name = document.getElementById('name').value = ""
+            var email = document.getElementById('email').value = ""
+            var btn = document.getElementById('btn').value = "Add"
+        }
+        userInfo();
+    })
+    function deleteData(id) {
+        person.splice(id, 1)
+        userInfo()
+    }
+    function editData(id) {
+        document.getElementById('name').value = person[id].name
+        document.getElementById('email').value = person[id].email
+        document.getElementById('uid').value = id
+        document.getElementById('btn').value = "Update"
+    }
+    function userInfo() {
+        var html = ""
+        person.map((pr, i) => {
+            html += `<tr>
+                        <td  class="gray-lt-color">${pr.name}</td>
+                        <td  class="gray-lt-color">${pr.email}</td>
+                        <td><span class="cover" onclick=editData(${i})><a href="javascript:void(0)"><i
+                                                    class="fa-regular fa-pen-to-square"></i></a></span></td>
+                        <td><span class="cover1" onclick=deleteData(${i})><a href="javascript:void(0)"><i
+                                                    class="fa-regular fa-trash-can"></i></a></span></td>
+                    </tr>`
+        })
+        document.getElementById('setdata').innerHTML = html
+    }
+
+</script>
+
+</html>

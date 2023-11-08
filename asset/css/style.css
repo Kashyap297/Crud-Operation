@@ -1,0 +1,111 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none !important;
+    list-style: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+:root {
+    --gray-color: #44475B;
+    --gray-lt-color: #44475bde;
+    --green-color: #1fa181;
+    --blue-color: #2a569c;
+    --green-bg-clr: #ddf7ef;
+    --bl-bg-clr: #2a569c;
+    --org-clr: #eb5b3c;
+    /* --org-bg-clr: #e2aea091; */
+    --og-bg-cr: #e2aea091;
+}
+
+::placeholder {
+    color: var(--blue-color);
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.org-clr {
+    color: var(--org-clr);
+}
+
+.green-clr {
+    color: var(--green-color);
+}
+
+.border-blue-color {
+    border: 1px solid var(--blue-color) !important;
+}
+
+.border-org-color {
+    border: 1px solid #eb5b3c;
+}
+
+.gray-lt-color {
+    color: var(--gray-lt-color) !important;
+}
+
+.gray-color {
+    color: var(--gray-color) !important;
+}
+
+.blue-color {
+    color: var(--blue-color) !important;
+}
+
+.bl-bg-clr{
+    background-color: var(--bl-bg-clr) !important;
+}
+
+.og-bg-cr {
+    background-color: var(--og-bg-cr) !important;
+}
+
+input:focus {
+    outline: 1px solid var(--blue-color);
+}
+
+input {
+    padding: 7px 13px;
+    border: 1px solid var(--gray-lt-color);
+    border-radius: 10px;
+    font-size: 18px !important;
+    color: #44475bde !important;
+}
+
+input[type=submit] {
+    background-color: var(--blue-color);
+    color: white !important;
+    font-weight: 500 !important;
+    margin: auto;
+    outline: none;
+}
+input[type=submit]:active {
+    transform: translateY(1px);
+    transition: all 0.1s ease-in-out;
+}
+.cover{
+    padding: 4px 10px;
+    background-color: var(--green-color);
+    border-radius: 5px;
+}
+.cover a i{
+    color: white;
+}
+.cover1{
+    padding: 4px 10px;
+    background-color: var(--org-clr);
+    border-radius: 5px;
+}
+.cover1 a i{
+    color: white;
+}
+table{
+    color: var(--gray-lt-color) !important;
+}
